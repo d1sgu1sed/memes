@@ -27,18 +27,6 @@ body{
     min-height: 480px;
 }
 
-.container li{
-  color: red;
-  font-weight: thin;
-  font-size: 10pt;
-  margin: 4px 0;
-  list-style-type: none;
-}
-
-.input-container{
-  width: 100%;
-}
-
 .container p{
     font-size: 14px;
     line-height: 20px;
