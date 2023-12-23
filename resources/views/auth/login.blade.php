@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <title>Modern Login Page | AsmrProg</title>
+    <title>Login | Registration</title>
     @vite(['resources/css/css.css', 'resources/js/app.js'])
 </head>
 
@@ -13,14 +13,37 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
                 <h1>Создать аккаунт</h1>
                 <span>используй почту для регистрации</span>
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Почта">
-                <input type="password" placeholder="Пароль">
-                <input type="password" placeholder="Подтвердите пароль">
-                <button>зарегистрироваться</button>
+                <div class="input-container">
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Имя"/>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+                <div class="input-container">
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Почта"/>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+                <div class="input-container">
+                    <x-text-input id="password" class="block mt-1 w-full"
+                                    type="password"
+                                    name="password"
+                                    required autocomplete="new-password"
+                                    placeholder="Пароль"/>
+
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+                <div class="input-container">
+                    <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                                    type="password"
+                                    name="password_confirmation" required autocomplete="new-password"
+                                    placeholder="Подтвердите пароль"/>
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div>
+                <x-primary-button>
+                    {{ __('зарегистрироваться') }}
+                </x-primary-button>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -39,11 +62,6 @@
                                     required autocomplete="current-password" placeholder="Пароль"/>
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Забыли пароль?') }}
-                    </a>
-                @endif
                 <x-primary-button>
                     {{ __('Войти') }}
                 </x-primary-button>
