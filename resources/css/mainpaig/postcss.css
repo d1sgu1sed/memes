@@ -1,0 +1,29 @@
+.post{
+    width: 40vw;
+    height: 40vw;
+    border: 5px solid red;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    background-color: aqua;
+    font-size: 25pt;
+}
+.bottom{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    bottom: 0;
+    padding: 10px 0;
+    background-color: white;
+}
+.bottomLeft{
+    display: flex;
+    margin: 10px 30px;
+    align-items: center;
+}
+.bottomName{
+    margin: 0px 30px;
+}
