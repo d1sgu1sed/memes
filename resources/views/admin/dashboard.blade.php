@@ -1,4 +1,3 @@
-@extends('admin.layouts.app_admin')
-@section('content')
-<h1>LLOLOL</h1>
-@endsection
+<x-app-layout>
+    <h1>lolo</h1>
+</x-app-layout>

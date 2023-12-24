@@ -1,7 +1,4 @@
-
-*{
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 body{
     margin: 0;
@@ -13,15 +10,8 @@ body{
     transition: all 0.4s;
 }
 
-button{
-    background: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
 .sidebar{
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     top: 0;
     left: 0;
@@ -93,12 +83,12 @@ body.open .sidebar-logo{
     display: grid;
 }
 
-.sidebar-menu > button{
+.sidebar-menu > form{
     display: flex;
     gap: 12px;
     align-items: center;
     height: 55px;
-    font-family: "Ubuntu";
+    cursor: pointer;
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 2px;
@@ -108,41 +98,47 @@ body.open .sidebar-logo{
     transition: all 0.4s;
 }
 
-.sidebar-menu > button:hover{
+.sidebar-menu > form:hover{
     border-left: 3px solid #f9f9f9;
 }
 
-.sidebar-menu > button.has-border{
+.sidebar-menu > form.has-border{
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     margin-bottom: 1rem;
 }
 
-.sidebar-menu > button > i{
+.sidebar-menu > form > i{
     font-size: 25px;
     color: #f9f9f9;
     transition: all 0.4s;
 }
 
-.sidebar-menu > button:hover > i, .sidebar-menu > button:hover > span{
+.sidebar-menu > form:hover > i, .sidebar-menu > form:hover > a{
     color: #bdbdbd;
 }
 
-.sidebar-menu > button > span{
+.sidebar-menu > form > a{
     color: #f9f9f9;
     opacity: 0;
     transition: all 0.4s;
 }
 
-body.open .sidebar-menu > button > span{
+body.open .sidebar-menu > form > a{
     opacity: 1;
     transition: all 0.4s;
 }
 
-
+.logoutbtn{
+    position: fixed;
+    bottom: 10px;
+}
 
 
 .lenta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .welc_header{
   display: flex;
