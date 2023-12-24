@@ -11,37 +11,39 @@
             </header>
 
             <nav class="sidebar-menu">
-              <form method="GET" action="{{route('dashboard')}}">
+              <form action="{{route('dashboard')}}">
                   <i class='bx bx-home' onclick="event.preventDefault();
-                              this.closest('form').submit();" :href="route('dashboard')" :active="request()->routeIs('dashboard')"></i>
-                  <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                      {{ __('Главная') }}
-                  </x-nav-link>
+                              this.closest('form').submit();" :active="request()->routeIs('dashboard')"></i>
+                  <a :href="route('dashboard')" :active="request()->routeIs('dashboard')" onclick="event.preventDefault();
+                              this.closest('form').submit();">
+                      Главная
+                  </a>
               </form>
-              <form method="GET" action="{{route('profile.edit')}}">
+              <form action="{{route('admin.index')}}">
                   <i class='bx bx-user' onclick="event.preventDefault();
                               this.closest('form').submit();"></i>
-                  <x-dropdown-link :href="route('profile.edit')">
-                      {{ __('Мой блог') }}
-                  </x-dropdown-link>
+                  <a onclick="event.preventDefault();
+                              this.closest('form').submit();">
+                      Мой блог
+                  </a>
               </form>
-                <form method="GET" action="{{route('profile.edit')}}">
+                <form action="{{route('profile.edit')}}">
                     <i class='bx bx-cog' onclick="event.preventDefault();
                                 this.closest('form').submit();"></i>
-                    <x-dropdown-link :href="route('profile.edit')">
-                        {{ __('Настройки') }}
-                    </x-dropdown-link>
+                    <a onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                        Настройки
+                    </a>
                 </form>
                   <form class="logoutbtn" method="POST" action="{{ route('logout') }}">
                       @csrf
-                      <i class='bx bx-log-out-circle' :href="route('logout')"
+                      <i class='bx bx-log-out-circle'
                               onclick="event.preventDefault();
                                           this.closest('form').submit();"></i>
-                      <x-dropdown-link :href="route('logout')"
-                              onclick="event.preventDefault();
+                      <a onclick="event.preventDefault();
                                           this.closest('form').submit();">
-                          {{ __('Выход') }}
-                      </x-dropdown-link>
+                          Выход
+                      </a>
                   </form>
             </nav>
         </div>
