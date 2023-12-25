@@ -5,6 +5,7 @@ body{
     background: #E7E8D1;
     display: flex;
     justify-content: center;
+    user-select: none;
     width: calc(vW - 75)px;
     margin-left: 75px;
     transition: all 0.4s;

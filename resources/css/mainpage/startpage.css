@@ -4,6 +4,7 @@ body{
     padding: 0;
     background-color: #E7E8D1;
     font-family: 'Montserrat', sans-serif;
+    user-select: none;
 }
 .startcenter{
     display: flex;

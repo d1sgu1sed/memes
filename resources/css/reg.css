@@ -8,6 +8,7 @@
 }
 
 body{
+    user-select: none;
     background-color: #E7E8D1;
     display: flex;
     align-items: center;
