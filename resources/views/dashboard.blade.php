@@ -10,6 +10,7 @@
                   </a>
               </h5>
                   <h2 class="card-subtitle mb-2 text-muted"><a href="{{ route('posts.show', $post) }}">{{ $post->title }}{{$post->isPublished() ? ' ' : ' ⏰ '.$post->published_at }}</a></h2>
+                  <img src="{{ asset('/storage/' . $post->image)}}">
                   <pre class="card-text">{!! $post->content !!}</pre>
                   @auth
                       @if($post->user->id === auth()->id())

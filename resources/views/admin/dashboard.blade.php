@@ -1,6 +1,6 @@
 <x-app-layout>
   <div class="container">
-      <form action="{{ route('posts.create') }}" method="post">
+      <form action="{{ route('posts.create') }}" method="post" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
               <label for="title">Заголовок</label>

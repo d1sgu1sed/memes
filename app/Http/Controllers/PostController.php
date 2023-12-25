@@ -33,8 +33,8 @@ class PostController extends Controller
   auth()->user()->posts()->create([
       'title' => $request->input('title'),
       'content' => $request->input('content'),
-      'image' => $request->input('image'),
       'published_at' => $publishedAt,
+      'image' => $request->file('image')->store('uploads', 'public'),
   ]);
 
   return redirect()->route('admin.index')->with('success', 'Пост успешно создан');
