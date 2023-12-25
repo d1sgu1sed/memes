@@ -33,10 +33,11 @@ class PostController extends Controller
   auth()->user()->posts()->create([
       'title' => $request->input('title'),
       'content' => $request->input('content'),
+      'image' => $request->input('image'),
       'published_at' => $publishedAt,
   ]);
 
-  return redirect()->route('home')->with('success', 'Пост успешно создан');
+  return redirect()->route('admin.index')->with('success', 'Пост успешно создан');
 }
 
   public function edit(Post $post)
@@ -49,11 +50,13 @@ class PostController extends Controller
       $request->validate([
           'title' => 'required|string|max:255',
           'content' => 'required|string',
+          'image' => 'required'
       ]);
 
       $post->update([
           'title' => $request->title,
           'content' => $request->content,
+          'image' => $request->image
       ]);
 
       return redirect()->route('home')->with('status', 'Пост успешно обновлен.');

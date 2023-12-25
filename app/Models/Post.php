@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon; //Для времени
 class Post extends Model
 {
-  protected $fillable = ['user_id', 'title', 'content', 'published_at'];
+  protected $fillable = ['user_id', 'title', 'content', 'image', 'published_at'];
   protected $dates = ['published_at'];
 
   public function user()
