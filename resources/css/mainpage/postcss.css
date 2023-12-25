@@ -7,6 +7,7 @@
     overflow: hidden;
     background-color: aqua;
     font-size: 25pt;
+    margin: 20px;
 }
 .bottom{
     position: absolute;
@@ -16,14 +17,17 @@
     height: 8%;
     width: 100%;
     bottom: 0;
-    padding: 10px 0;
+    padding: 25px 0;
     background-color: white;
 }
 .bottomLeft{
     display: flex;
     margin: 10px 30px;
-    align-items: center;
+    align-items: left center;
 }
 .bottomName{
     margin: 0px 30px;
+}
+.posts{
+    margin-top: 30px;
 }
