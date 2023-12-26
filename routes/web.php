@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 

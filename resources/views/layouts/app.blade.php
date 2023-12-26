@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div>
+        <div style="width: 100%;">
             @include('layouts.navigation')
 
             <!-- Page Content -->

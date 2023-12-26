@@ -3,8 +3,9 @@
   @forelse($posts as $post)
   <?php $userLiked = $post->likes()->where('user_id', auth()->id())->exists(); ?>
       @if($post->isPublished() || auth()->user()->id === $post->user->id)
+      <div class="container_for_posts">
       <div class="post" id="post">
-        <a href="#">
+        <a href="{{route('posts.show', $post)}}">
           <img src="{{ asset('/storage/' . $post->image)}}">
         </a>
           <div class="bottom">
@@ -28,17 +29,6 @@
                         </button>
                     </form>
                 @endif
-                  <!-- <form class="likes" action="{{route('posts.like', $post->user)}}" method="post">
-                    @csrf
-                    <div>
-
-                    <button type="submit" name="button">
-                      <i class='bx bx-heart bx-tada-hover'></i>
-                    </button>
-                      <span id="likes">{{count($post->likes)}}</span>
-                    </div>
-                  </form> -->
-
                   <a href="{{route('posts.show', $post)}}">
                     <span>&#128173;</span>
                     <span id="comments">{{count($post->comments)}}</span>
@@ -61,4 +51,5 @@
         </div>
     </div>
   @endforelse
+</div>
 </x-app-layout>
