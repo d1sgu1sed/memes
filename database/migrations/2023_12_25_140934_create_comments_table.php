@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->foreignId('user_id')->constrained();
+          $table->foreignId('post_id')->constrained();
+          $table->text('comment_text');
+          $table->boolean('moderated')->default(false);
+          $table->boolean('approved')->default(false);
+          $table->timestamps();
+          $table->softDeletes();
         });
     }
 
