@@ -3,7 +3,7 @@
   <?php $userLiked = $post->likes()->where('user_id', auth()->id())->exists(); ?>
   <div class="container">
   <div class="post" id="posttemplate">
-      <img src="{{ asset('/storage/' . $post->image)}}">
+      <img id = "my-img" src="{{ asset('/storage/' . $post->image)}}" onclick="attachImg()">
       <div class="bottom">
           <div class="bottomLeft">
             @if($userLiked)
@@ -74,3 +74,11 @@
       </form>
   </div>
 </x-app-layout>
+<script type="text/javascript">
+  function attachImg(){
+    const c = document.getElementById("my-img"); // берем картинку по id
+    const d = c.src; // берем ее src
+    const w = window.open('about:blank','new image'); // открываем окно
+    w.document.write("<img src='" + d + "' alt='from old image' />");
+  }
+</script>
