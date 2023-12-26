@@ -3,7 +3,6 @@ body{
     background: #E7E8D1;
     display: flex;
     justify-content: center;
-    width: calc(vW - 75)px;
     margin-left: 75px;
     transition: all 0.4s;
 }
@@ -27,7 +26,6 @@ button{
 }
 
 body.open{
-    width: calc(vW - 250)px;
     margin-left: 250px;
 }
 
@@ -93,7 +91,6 @@ body.open .sidebar-logo{
     gap: 12px;
     align-items: center;
     height: 55px;
-    font-family: "Ubuntu";
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 2px;

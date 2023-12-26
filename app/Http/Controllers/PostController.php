@@ -66,6 +66,6 @@ class PostController extends Controller
   {
       $post->delete();
 
-      return redirect()->route('home')->with('status', 'Пост успешно удален.');
+      return redirect()->route('dashboard')->with('status', 'Пост успешно удален.');
   }
 }

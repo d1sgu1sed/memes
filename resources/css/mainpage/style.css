@@ -6,7 +6,6 @@ body{
     display: flex;
     justify-content: center;
     user-select: none;
-    width: calc(vW - 75)px;
     margin-left: 75px;
     transition: all 0.4s;
 }
@@ -23,7 +22,6 @@ body{
 }
 
 body.open{
-    width: calc(vW - 250)px;
     margin-left: 250px;
 }
 

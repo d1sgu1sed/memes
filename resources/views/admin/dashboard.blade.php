@@ -4,16 +4,16 @@
       @if($user->id === auth()->id())
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-2 text-gray-900">
-                    Ваши посты
+                <div class="p-6 text-gray-900">
+                  <span style="font-size: 16pt;text-transform: uppercase;">ваши посты</span>
                 </div>
             </div>
         </div>
       @else
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-2 text-gray-900">
-                    Посты пользователя {{__($user->name)}}
+                <div class="p-6 text-gray-900">
+                  <span style="font-size: 16pt; text-transform: uppercase;">посты пользователя {{__($user->name)}}</span>
                 </div>
             </div>
         </div>
@@ -51,6 +51,15 @@
                     <span id="comments">{{count($post->comments)}}</span>
                   </a>
               </div>
+              @auth
+                  @if($post->user->id === auth()->id())
+                      <form action="{{ route('posts.destroy', $post) }}" method="post" style="display: inline-block;">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этот пост?')">&#10060;</button>
+                      </form>
+                  @endif
+              @endauth
               <div class="bottomName">
                 <a href="{{ route('admin.index', $post->user) }}">
                     {{ $post->user->id === auth()->id() ? 'Вы' : $post->user->name }}
@@ -83,15 +92,6 @@
             <label for="content">Картинка</label>
             <input type="file"class="form-control" id="image" name="image" required></input>
           </div>
-          <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="schedule_post" name="schedule_post">
-              <label class="form-check-label" for="schedule_post">Опубликовать в определённое время</label>
-          </div>
-
-          <div id="schedule_options" style="display: none;">
-              <label for="published_at">Дата и время публикации:</label>
-              <input type="datetime-local" id="published_at" name="published_at">
-      </div>
           <button type="submit" class="btn btn-primary">Создать пост</button>
       </form>
     </div>

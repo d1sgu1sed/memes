@@ -34,6 +34,15 @@
                     <span id="comments">{{count($post->comments)}}</span>
                   </a>
               </div>
+              @auth
+                  @if($post->user->id === auth()->id())
+                      <form action="{{ route('posts.destroy', $post) }}" method="post" style="display: inline-block;">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этот пост?')">&#10060;</button>
+                      </form>
+                  @endif
+              @endauth
               <div class="bottomName">
                 <a href="{{ route('admin.index', $post->user) }}">
                     {{ $post->user->id === auth()->id() ? 'Вы' : $post->user->name }}

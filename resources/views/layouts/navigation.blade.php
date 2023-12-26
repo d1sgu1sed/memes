@@ -26,10 +26,8 @@
                   </a>
               </form>
                 <form action="{{route('profile.edit')}}">
-                    <i class='bx bx-cog' onclick="event.preventDefault();
-                                this.closest('form').submit();"></i>
-                    <a onclick="event.preventDefault();
-                                this.closest('form').submit();">
+                    <i class='bx bx-cog' onclick="window.location.href = '{{route('profile.edit')}}';"></i>
+                    <a href="{{route('profile.edit')}}">
                         Настройки
                     </a>
                 </form>
