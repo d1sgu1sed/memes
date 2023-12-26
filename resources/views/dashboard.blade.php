@@ -31,7 +31,15 @@
                 @endif
                   <a href="{{route('posts.show', $post)}}">
                     <span>&#128173;</span>
-                    <span id="comments">{{count($post->comments)}}</span>
+                    <?php
+                      $cnt = 0;
+                      foreach ($post->comments as $key => $value) {
+                        if($value->approved){
+                          $cnt++;
+                        }
+                      }
+                     ?>
+                    <span id="comments"><?php echo $cnt;?></span>
                   </a>
               </div>
               @auth
