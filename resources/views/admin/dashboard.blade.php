@@ -1,5 +1,5 @@
 <x-app-layout>
-  @vite(['resources/css/mainpage/postcss.css'])
+  @vite(['resources/css/mainpage/postcss.css', 'resources/css/mainpage/attach.css'])
   <div class="container_for_posts">
       @if($user->id === auth()->id())
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="">
@@ -78,22 +78,26 @@
     </div>
   @endforelse
     @if($user->id === auth()->id())
+    <div class="mainPostForm">
       <form action="{{ route('posts.create') }}" method="post" enctype="multipart/form-data">
-          @csrf
-          <div class="form-group">
-              <label for="title">Заголовок</label>
-              <input type="text" class="form-control" id="title" name="title" required>
-          </div>
-          <div class="form-group">
-              <label for="content">Содержание</label>
-              <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
-          </div>
-          <div class="">
-            <label for="content">Картинка</label>
-            <input type="file"class="form-control" id="image" name="image" required></input>
-          </div>
-          <button type="submit" class="btn btn-primary">Создать пост</button>
-      </form>
+                @csrf
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Придумайте заголовок..." required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="content" name="content" rows="4" placeholder="Хихи-хаха..." required></textarea>
+                </div>
+                <div class="buttons">
+                  <div class="add-pic">
+                    <label class="input-file">
+                      <input type="file" id="image" name="image" required></input>
+                      <span>Прикрепить</span>
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Опубликовать</button>
+                </div>
+            </form>
+    </div>
     </div>
     @endif
 </x-app-layout>

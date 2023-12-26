@@ -8,10 +8,6 @@ use Carbon\Carbon;
 
 class PostController extends Controller
 {
-  public function createForm()
-  {
-      return view('posts.create');
-  }
 
   public function show(Post $post)
   {
@@ -39,28 +35,6 @@ class PostController extends Controller
 
   return redirect()->route('dashboard')->with('success', 'Пост успешно создан');
 }
-
-  public function edit(Post $post)
-  {
-      return view('posts.edit', compact('post'));
-  }
-
-  public function update(Request $request, Post $post)
-  {
-      $request->validate([
-          'title' => 'required|string|max:255',
-          'content' => 'required|string',
-          'image' => 'required'
-      ]);
-
-      $post->update([
-          'title' => $request->title,
-          'content' => $request->content,
-          'image' => $request->image
-      ]);
-
-      return redirect()->route('home')->with('status', 'Пост успешно обновлен.');
-  }
 
   public function destroy(Post $post)
   {

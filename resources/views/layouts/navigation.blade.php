@@ -25,6 +25,14 @@
                       Мой блог
                   </a>
               </form>
+              @if(auth()->check() && auth()->user()->ismoderator)
+              <form>
+                  <i class='bx bx-briefcase' onclick="window.location.href = '{{route('moderate.comments')}}';"></i>
+                  <a href="{{route('moderate.comments')}}">
+                      Модерация
+                  </a>
+              </form>
+              @endif
                 <form action="{{route('profile.edit')}}">
                     <i class='bx bx-cog' onclick="window.location.href = '{{route('profile.edit')}}';"></i>
                     <a href="{{route('profile.edit')}}">

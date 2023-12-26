@@ -6,25 +6,27 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ModerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth']], function (){
   Route::get('/{user}', [DashboardController::class, 'dashboard'])->name('admin.index');
-  Route::get('/posts/create', [PostController::class, 'createForm'])->name('posts.createForm');
   Route::post('/posts/create', [PostController::class, 'create'])->name('posts.create');
   Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comments.store');
-  Route::get('/user/{user}/get-posts', [UserController::class, 'getPosts'])->name('user.getPosts');
-  Route::get('/user/{user}/get-comments', [UserController::class, 'getComments'])->name('user.getComments');
-  Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
-  Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
   Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware(['auth', 'ismoderator'])->group(function () {
+    Route::get('/moderate/comments', [ModerController::class, 'comments'])->name('moderate.comments');
+    Route::post('/moderate/comments/{comment}/approve', [ModerController::class, 'approveComment'])->name('moderate.approveComment');
+    Route::post('/moderate/comments/{comment}/reject', [ModerController::class, 'rejectComment'])->name('moderate.rejectComment');
 });
 
 Route::middleware('auth')->group(function () {
