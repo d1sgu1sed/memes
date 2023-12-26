@@ -47,12 +47,16 @@
 
   <div class="comments">
       <div class="postcaption">
-          <h1>{{$post->title}}</h1>
+          <h1 style='font-weight:bold;'>{{$post->title}}</h1>
           <span>{{$post->content}}</span>
       </div>
       <hr>
       <div class="com">
-
+        @forelse($post->comments()->where('moderated', true)->where('approved', true)->paginate(15) as $comment)
+          <span class="card-title">{{ $comment->user->id === auth()->id() ? 'Вы' : $comment->user->name }}: {{ $comment->comment_text }}</span>
+        @empty
+            <span>Нет одобренных комментариев.</span>
+        @endforelse
       </div>
       <form method="post" action="{{ route('comments.store', $post) }}" class="containeraddcom">
         @csrf
