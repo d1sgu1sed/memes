@@ -37,7 +37,7 @@ class PostController extends Controller
       'image' => $request->file('image')->store('uploads', 'public'),
   ]);
 
-  return redirect()->route('admin.index')->with('success', 'Пост успешно создан');
+  return redirect()->route('dashboard')->with('success', 'Пост успешно создан');
 }
 
   public function edit(Post $post)

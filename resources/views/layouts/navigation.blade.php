@@ -14,16 +14,14 @@
               <form action="{{route('dashboard')}}">
                   <i class='bx bx-home' onclick="event.preventDefault();
                               this.closest('form').submit();" :active="request()->routeIs('dashboard')"></i>
-                  <a :href="route('dashboard')" :active="request()->routeIs('dashboard')" onclick="event.preventDefault();
+                  <a href="{{route('dashboard')}}" onclick="event.preventDefault();
                               this.closest('form').submit();">
                       Главная
                   </a>
               </form>
-              <form action="{{route('admin.index')}}">
-                  <i class='bx bx-user' onclick="event.preventDefault();
-                              this.closest('form').submit();"></i>
-                  <a onclick="event.preventDefault();
-                              this.closest('form').submit();">
+              <form>
+                  <i class='bx bx-user' onclick="window.location.href = '{{ route('admin.index',  Auth::user()->id) }}';"></i>
+                  <a href="{{ route('admin.index',  Auth::user()->id) }}">
                       Мой блог
                   </a>
               </form>

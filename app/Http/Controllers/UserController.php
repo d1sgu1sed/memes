@@ -12,7 +12,7 @@ class UserController extends Controller
         $posts = $user->posts;
         $comments = $user->comments()->where('approved', true)->get();
 
-        return view('users.show', compact('user', 'posts', 'comments'));
+        return view('admin.dashboard', compact('user', 'posts', 'comments'));
     }
 
     public function getPosts(User $user){

@@ -29,7 +29,7 @@
                 <span id="comments">{{count($post->comments)}}</span>
           </div>
           <div class="bottomName">
-            <a href="{{ route('user.show', $post->user) }}">
+            <a href="{{ route('admin.index', $post->user) }}">
                 {{ $post->user->id === auth()->id() ? 'Вы' : $post->user->name }}
             </a>
           </div>
@@ -43,25 +43,6 @@
       </div>
       <hr>
       <div class="com">
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
-          <span>FDDFSDFDF</span>
           <span>FDDFSDFDF</span>
           <span>FDDFSDFDF</span>
           <span>FDDFSDFDF</span>

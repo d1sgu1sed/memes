@@ -35,7 +35,7 @@
                   </a>
               </div>
               <div class="bottomName">
-                <a href="{{ route('user.show', $post->user) }}">
+                <a href="{{ route('admin.index', $post->user) }}">
                     {{ $post->user->id === auth()->id() ? 'Вы' : $post->user->name }}
                 </a>
               </div>
@@ -46,7 +46,7 @@
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
-                "Нет доступных постов"
+                Нет доступных постов
             </div>
         </div>
     </div>
