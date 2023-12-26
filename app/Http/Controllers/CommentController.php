@@ -11,13 +11,12 @@ class CommentController extends Controller
   public function store(Request $request, Post $post)
   {
       $request->validate([
-          'content' => 'required',
+          'comment' => 'required',
       ]);
 
-      // Создание комментария и привязка к посту
       $comment = $post->comments()->create([
           'user_id' => auth()->id(),
-          'comment_text' => $request->input('content'),
+          'comment_text' => $request->input('comment'),
           'moderated' => false,
           'approved' => false,
       ]);

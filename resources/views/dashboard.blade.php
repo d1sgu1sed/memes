@@ -35,7 +35,7 @@
                   </a>
               </div>
               @auth
-                  @if($post->user->id === auth()->id())
+                  @if($post->user->id === auth()->id() || auth()->user()->ismoderator)
                       <form action="{{ route('posts.destroy', $post) }}" method="post" style="display: inline-block;">
                           @csrf
                           @method('delete')
