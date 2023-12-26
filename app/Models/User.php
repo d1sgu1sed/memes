@@ -16,11 +16,14 @@ class User extends Authenticatable
         return $this->hasMany(Post::class)->orderByDesc('created_at');;
     }
 
-
-
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    public function likes()
+   {
+       return $this->hasMany(Like::class);
+   }
 
     /**
      * The attributes that are mass assignable.

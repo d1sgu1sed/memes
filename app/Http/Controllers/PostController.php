@@ -16,7 +16,7 @@ class PostController extends Controller
   public function show(Post $post)
   {
       if ($post->isPublished() || auth()->user() && auth()->user()->id === $post->user->id){
-          return view('posts.show', compact('post'));
+          return view('post.show', compact('post'));
       }
       return abort('404');
   }
